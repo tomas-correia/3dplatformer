@@ -3,8 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private Camera playerCamera;
     public float walkSpeed = 6f;
     [SerializeField]
     private float runSpeed = 12f;
@@ -14,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = 10f;
     [SerializeField]
     private float lookSpeed = 2f;
-    [SerializeField]
-    private float lookXLimit = 45f;
     [SerializeField]
     private float defaultHeight = 2f;
     [SerializeField]
@@ -41,10 +37,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
+        float currentSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
+        float currentSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        moveDirection = (forward * currentSpeedX) + (right * currentSpeedY);
 
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
