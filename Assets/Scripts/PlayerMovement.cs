@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     public float crouchSpeed = 3f;
 
     private Vector3 moveDirection = Vector3.zero;
-    private float rotationX = 0;
     private CharacterController characterController;
 
     private bool canMove = true;
@@ -31,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Movement Logic
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
@@ -54,12 +54,12 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
+        // Crouching Logic
         if (Input.GetKey(KeyCode.R) && canMove)
         {
             characterController.height = crouchHeight;
             walkSpeed = crouchSpeed;
             runSpeed = crouchSpeed;
-
         }
         else
         {
@@ -68,14 +68,13 @@ public class PlayerMovement : MonoBehaviour
             runSpeed = 12f;
         }
 
+        // Apply movement
         characterController.Move(moveDirection * Time.deltaTime);
 
         if (canMove)
         {
-            rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+            // Apply horizontal rotation for turning left/right
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0); // Left/Right movement only
         }
     }
 }
