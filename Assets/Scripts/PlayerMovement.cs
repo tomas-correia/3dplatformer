@@ -12,12 +12,6 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = 10f;
     [SerializeField]
     private float lookSpeed = 2f;
-    [SerializeField]
-    private float defaultHeight = 2f;
-    [SerializeField]
-    private float crouchHeight = 1f;
-    [SerializeField]
-    private float crouchSpeed = 3f;
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController characterController;
@@ -54,20 +48,6 @@ public class PlayerMovement : MonoBehaviour
         if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
-        }
-
-        // Crouching Logic
-        if (Input.GetKey(KeyCode.R) && canMove)
-        {
-            characterController.height = crouchHeight;
-            walkSpeed = crouchSpeed;
-            runSpeed = crouchSpeed;
-        }
-        else
-        {
-            characterController.height = defaultHeight;
-            walkSpeed = 6f;
-            runSpeed = 12f;
         }
 
         // Apply movement
