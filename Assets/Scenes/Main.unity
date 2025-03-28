@@ -429,9 +429,10 @@ GameObject:
   - component: {fileID: 1210959446}
   - component: {fileID: 1210959448}
   - component: {fileID: 1210959447}
+  - component: {fileID: 1210959449}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -467,13 +468,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e394a862bbf2f3439366f7dd705b5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 1048949283}
   walkSpeed: 6
   runSpeed: 12
   jumpPower: 6
   gravity: 10
   lookSpeed: 2
-  lookXLimit: 45
   defaultHeight: 1
   crouchHeight: 1
   crouchSpeed: 3
@@ -503,6 +502,22 @@ CharacterController:
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1210959449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210959443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5faf342ee20f844ad04a9df64e446a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1907419586568406050, guid: 7b6e37887be81a04795d23268738a14f, type: 3}
+  bulletSpawnPoint: {fileID: 1407926952}
+  bulletSpeed: 100
+  bulletLifetime: 2
 --- !u!1 &1386811424
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +623,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1407926951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407926952}
+  m_Layer: 0
+  m_Name: BulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1407926952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407926951}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1653381210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1653381209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -674,7 +720,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 775409d4e7c6b3a44be6876881350d38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1407926952}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 775409d4e7c6b3a44be6876881350d38, type: 3}
 --- !u!4 &1653381210 stripped
