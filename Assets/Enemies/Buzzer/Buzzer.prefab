@@ -108,8 +108,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 7184941129380718317}
   - component: {fileID: 5997234835502567401}
   - component: {fileID: -6550296254312415181}
+  - component: {fileID: 6369733552723240528}
   m_Layer: 0
   m_Name: Buzzer
   m_TagString: Untagged
@@ -239,6 +240,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263338170b845534ca7fad1a93e7765b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectMesh: {fileID: 1361495244464007825}
+--- !u!114 &6369733552723240528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7632964859077173373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b421cb2ce479c644ac684da3010dc32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nametag: {fileID: 6449925512376942413}
 --- !u!1001 &2171976815657359296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -296,6 +311,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4eb7bd387bd51d4a89501ead681b65b, type: 3}
+--- !u!1 &1361495244464007825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a4eb7bd387bd51d4a89501ead681b65b, type: 3}
+  m_PrefabInstance: {fileID: 2171976815657359296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1850645309183062059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a4eb7bd387bd51d4a89501ead681b65b, type: 3}

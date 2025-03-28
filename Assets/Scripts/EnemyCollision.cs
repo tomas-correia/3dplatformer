@@ -1,15 +1,18 @@
+using System;
 using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
 {
-    private int health = 100;
+    [SerializeField]   
+    private GameObject objectMesh;
+    public int Health { get; private set; } = 100;
     private Renderer[] meshRenderers;
     private Color originalColor;
 
     void Start()
     {
         // Get all Renderer components from the current object and its children
-        meshRenderers = GetComponentsInChildren<Renderer>();
+        meshRenderers = objectMesh.GetComponentsInChildren<Renderer>();
 
         // Store the original color of the first Renderer component
         if (meshRenderers.Length > 0)
@@ -26,10 +29,11 @@ public class EnemyCollision : MonoBehaviour
         }
 
         TintRed();
+        UpdateNameTag();
 
-        if (health > 0)
+        if (Health > 0)
         {
-            health -= 10;
+            Health -= 10;
         }
         else
         {
@@ -37,7 +41,14 @@ public class EnemyCollision : MonoBehaviour
         }
     }
 
-    void TintRed()
+    private void UpdateNameTag()
+    {
+        var nametag = GetComponentInChildren<EnemyNametag>();
+
+        nametag.UpdateText();
+    }
+
+    private void TintRed()
     {
         // Iterate through all meshRenderers and tint each one red
         foreach (var renderer in meshRenderers)
@@ -49,7 +60,7 @@ public class EnemyCollision : MonoBehaviour
         Invoke(nameof(ResetColor), 0.1f);
     }
 
-    void ResetColor()
+    private void ResetColor()
     {
         // Reset the color of all meshRenderers to the original color
         foreach (var renderer in meshRenderers)
